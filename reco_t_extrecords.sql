@@ -33,7 +33,7 @@ CREATE TABLE `t_extrecords` (
   `currencyId` int(11) NOT NULL,
   `recordType` varchar(16) NOT NULL COMMENT 'Either "Header", "Footer", "Row"',
   `transactionType` varchar(32) DEFAULT NULL COMMENT '''''DR'''', ''''CR''''',
-  `trasactionSubType` varchar(32) DEFAULT NULL,
+  `transactionSubType` varchar(32) DEFAULT NULL,
   `processingStatus` varchar(16) NOT NULL DEFAULT 'New' COMMENT 'Refer Lookup Table (RECO_IMPORTOVERALLSTATUS): New, Completed, Pending, Derived',
   `processingDateTime` datetime DEFAULT NULL,
   `referenceText_1` varchar(512) DEFAULT NULL,
@@ -102,8 +102,17 @@ CREATE TABLE `t_extrecords` (
   KEY `IDX_TER_4` (`jobId`,`relationshipId`,`processingStatus`,`isDeleted`,`amount_1`,`derivedCol_4`,`derivedCol_11`),
   CONSTRAINT `FK_TIMPORTEXT_JOBIMPORTS` FOREIGN KEY (`jobImportId`) REFERENCES `etl_jobimports` (`jobimportid`),
   CONSTRAINT `FK_TIMPORTEXT_JOBS` FOREIGN KEY (`jobId`) REFERENCES `etl_jobs` (`jobid`)
-) ENGINE=InnoDB AUTO_INCREMENT=8381 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='RECO job stores cleansed data in this table. Copies data from STG';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='RECO job stores cleansed data in this table. Copies data from STG';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_extrecords`
+--
+
+LOCK TABLES `t_extrecords` WRITE;
+/*!40000 ALTER TABLE `t_extrecords` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_extrecords` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -114,4 +123,4 @@ CREATE TABLE `t_extrecords` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-08 12:42:30
+-- Dump completed on 2019-01-09 10:34:52

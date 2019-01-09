@@ -33,7 +33,7 @@ CREATE TABLE `t_intrecords` (
   `currencyId` int(11) NOT NULL,
   `recordType` varchar(16) NOT NULL COMMENT 'Either "Header", "Footer", "Transaction"',
   `transactionType` varchar(32) DEFAULT NULL COMMENT '''''DR'''', ''''CR''''',
-  `trasactionSubType` varchar(32) DEFAULT NULL COMMENT 'NEFT, RTGS, IMPS (ONLINE TRANSFER)\nVENDOR PAYMENT, INTERNAL SWEEP, (BY CHEQUE)',
+  `transactionSubType` varchar(32) DEFAULT NULL COMMENT 'NEFT, RTGS, IMPS (ONLINE TRANSFER)\\nVENDOR PAYMENT, INTERNAL SWEEP, (BY CHEQUE)',
   `processingStatus` varchar(16) NOT NULL DEFAULT 'New' COMMENT 'Refer Lookup Table (RECO_IMPORTOVERALLSTATUS): New, Completed, InProgress, Pending. ',
   `processingDateTime` datetime DEFAULT CURRENT_TIMESTAMP,
   `referenceText_1` varchar(512) DEFAULT NULL,
@@ -107,8 +107,17 @@ CREATE TABLE `t_intrecords` (
   CONSTRAINT `FK_TIMPORTINT_JOBIMPORTS` FOREIGN KEY (`jobImportId`) REFERENCES `etl_jobimports` (`jobimportid`),
   CONSTRAINT `FK_TIMPORTINT_JOBS` FOREIGN KEY (`jobId`) REFERENCES `etl_jobs` (`jobid`),
   CONSTRAINT `FK_TIMPORTINT_RELATIONSHIPS` FOREIGN KEY (`relationshipId`) REFERENCES `m_relationships` (`relationshipid`)
-) ENGINE=InnoDB AUTO_INCREMENT=32768 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_intrecords`
+--
+
+LOCK TABLES `t_intrecords` WRITE;
+/*!40000 ALTER TABLE `t_intrecords` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_intrecords` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -119,4 +128,4 @@ CREATE TABLE `t_intrecords` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-08 12:42:21
+-- Dump completed on 2019-01-09 10:34:51
